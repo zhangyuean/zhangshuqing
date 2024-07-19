@@ -56,6 +56,6 @@ def test_detail_info(name):
                 if 'Quectel' in check_detail_list[i]:
                     print(f'检查到详细信息中{check_detail_list[i - 1]}：{check_detail_list[i]}存在敏感词')
 
-name = 'Version.exe 属性'
+name = 'ModemAuthServiceFCUN69WWD.exe 属性'
 test_detail_info(name)
 

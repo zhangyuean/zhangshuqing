@@ -8,10 +8,10 @@ from pywinauto import Desktop
 
 
 def test_detail_info(name):
-    top_windows = Desktop(backend="uia").windows()  # or backend="win32" by default
-    dlg = None
-    Language = None
     try:
+        top_windows = Desktop(backend="uia").windows()  # or backend="win32" by default
+        dlg = None
+        Language = None
         for w in top_windows:
             if len(w.window_text()):
                 pass
@@ -84,7 +84,8 @@ def open_file_properties(path):
 
     # 发送Alt + Enter组合键
     pyautogui.hotkey('alt', 'enter')
-    close_file('fw')
+    name = path.split('\\')[-2]
+    close_file(name)
 
 def traverse_files(driver_path, target_file):
     results = []
@@ -98,15 +99,21 @@ def traverse_files(driver_path, target_file):
         return results
 
 
-path = r'C:\Users\Lecter.zhang\Desktop\临时文件\NetPrisma_Windows_PCIE_Driver_FCUN69-WWD_Lenovo_V1.3.0.3_V06'
-# open_file_properties(path)
-file_types = ['.exe', '.sys', '.dll']
-file_list = []
-for file_type in file_types:
-    k = traverse_files(path, file_type)
-    file_list.append(k)
-print(file_list)
-for file_path in file_list:
-    name = file_path.split('\\')[-1] + ' ' + '属性'
-    open_file_properties(path)
-    test_detail_info(name)
+path = r'C:\Users\Lecter.zhang\Desktop\临时文件\NetPrisma_Windows_PCIE_Driver_FCUN69-WWD_Lenovo_V1.3.0.3_V06\windows\pcie\PsAutoReg\amd64\qcpsautoreg.dll'
+# file_types = ['.exe', '.sys', '.dll']
+# file_list = []
+# for file_type in file_types:
+#     k = traverse_files(path, file_type)
+#     file_list.append(k)
+
+# for file_path in file_list:
+#     for file in file_path:
+#         name = file.split('\\')[-1] + ' ' + '属性'
+#         print(f'name:{name}')
+#         open_file_properties(file)
+#         time.sleep(3)
+#         test_detail_info(name)
+name = path.split('\\')[-1] + ' ' + '属性'
+open_file_properties(path)
+time.sleep(3)
+test_detail_info(name)
