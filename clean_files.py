@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 from functools import reduce
 a = delete
-driver_path = r'C:\Users\Lecter.zhang\Desktop\临时文件'
+driver_path = r'C:\Users\randal.zhang\Desktop\临时文件'
 file_list = a.traverse_files(driver_path)
 file_remove_list = []
 for i in file_list:
